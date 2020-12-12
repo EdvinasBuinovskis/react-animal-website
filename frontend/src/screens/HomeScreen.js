@@ -12,7 +12,7 @@ export default function HomeScreen() {
 
     useEffect(() => {
         dispatch(listAnimals());
-    }, []);
+    }, [dispatch]);
     return (
         <div>
             {loading ? (<LoadingBox></LoadingBox>) :
