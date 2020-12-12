@@ -8,6 +8,7 @@ const data = {
             status: 'Atiduodamas',
             date: '2020-11-11',
             description: 'Nice dog',
+            telNum: '123456'
         },
         {
             _id: '2',
@@ -17,6 +18,7 @@ const data = {
             status: 'Atiduodamas',
             date: '2020-11-11',
             description: 'Nice cat',
+            telNum: '123456'
         },
         {
             _id: '3',
@@ -26,6 +28,7 @@ const data = {
             status: 'Ieskomas',
             date: '2020-11-10',
             description: 'Nice dog',
+            telNum: '123456'
         },
         {
             _id: '4',
@@ -35,6 +38,7 @@ const data = {
             status: 'Atiduodamas',
             date: '2020-10-11',
             description: 'Nice cat',
+            telNum: '123456'
         },
         {
             _id: '5',
@@ -44,6 +48,7 @@ const data = {
             status: 'Atiduodamas',
             date: '2020-11-11',
             description: 'Nice dog',
+            telNum: '123456'
         },
         {
             _id: '6',
@@ -53,6 +58,7 @@ const data = {
             status: 'Atiduodamas',
             date: '2020-11-11',
             description: 'Nice dog',
+            telNum: '123456'
         },
         {
             _id: '7',
@@ -62,6 +68,7 @@ const data = {
             status: 'Atiduodamas',
             date: '2020-11-11',
             description: 'Nice dog',
+            telNum: '123456'
         },
     ], 
 };
