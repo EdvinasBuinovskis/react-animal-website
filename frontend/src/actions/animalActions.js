@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_REQUEST, ANIMAL_DETAILS_SUCCESS, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS } from "../constants/AnimalConstants"
+import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_REQUEST, ANIMAL_DETAILS_SUCCESS, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS } from "../constants/animalConstants"
 
 export const listAnimals = () => async (dispatch) => {
     dispatch({

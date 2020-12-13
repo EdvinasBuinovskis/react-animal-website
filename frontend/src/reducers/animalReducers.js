@@ -1,4 +1,4 @@
-import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_SUCCESS, ANIMAL_DETAILS_REQUEST, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS } from "../constants/AnimalConstants";
+import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_SUCCESS, ANIMAL_DETAILS_REQUEST, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS } from "../constants/animalConstants";
 
 export const animalListReducer = (state = { loading: true, animals: [] }, action) => {
     switch (action.type) {
