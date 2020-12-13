@@ -5,6 +5,7 @@ import SigninScreen from './screens/SigninScreen';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from './actions/userActions';
+import RegisterScreen from './screens/RegisterScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -40,6 +41,7 @@ function App() {
         <main>
           <Route path="/animal/:id" component={AnimalScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
+          <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">© All rights reserved</footer>
