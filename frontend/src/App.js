@@ -32,7 +32,7 @@ function App() {
             {
               userInfo ? (
                 <div className="dropdown">
-                  <Link to="#">{userInfo.name} <i class="fa fa-caret-down"></i></Link>
+                  <Link to="#">{userInfo.name} <i className="fa fa-caret-down"></i></Link>
                   <ul className="dropdown-content">
                     <li>
                       <Link to="/profile">User Profile</Link>
@@ -65,11 +65,11 @@ function App() {
           <Route path="/animal/:id" component={AnimalScreen} exact></Route>
           <AdminRoute path="/animal/:id/edit" component={AnimalEditScreen} exact></AdminRoute>
           {/* <Route path="/animals" component={AnimalListScreen}></Route> */}
-          <AdminRoute path="/animal/add" component={AnimalCreateScreen}></AdminRoute>
+          <AdminRoute path="/animallist/add" component={AnimalCreateScreen} exact></AdminRoute>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
-          <AdminRoute path="/animallist" component={AnimalListScreen}></AdminRoute>
+          <AdminRoute path="/animallist" component={AnimalListScreen} exact></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">© All rights reserved</footer>

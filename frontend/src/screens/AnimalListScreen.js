@@ -31,7 +31,7 @@ export default function AnimalListScreen(props) {
             <div className="row">
                 <h1>Animals</h1>
                 <button type="button" className="primary" onClick={() =>
-                    props.history.push("/animal/add")
+                    props.history.push("/animallist/add")
                 }>
                     Create Animal
                 </button>
