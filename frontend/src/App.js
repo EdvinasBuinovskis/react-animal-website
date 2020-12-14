@@ -7,6 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import PrivateRoute from './components/PrivateRoute';
+import AnimalListScreen from './screens/AnimalListScreen';
+import AdminRoute from './components/AdminRoute';
+import AnimalEditScreen from './screens/AnimalEditScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -41,14 +45,29 @@ function App() {
                   <Link to="/signin">Sign In</Link>
                 )
             }
-
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">Admin {' '} <i className="fa fa-caret-down"></i></Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/animallist">Animals</Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">Users</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <main>
-          <Route path="/animal/:id" component={AnimalScreen}></Route>
+          <Route path="/animal/:id" component={AnimalScreen} exact></Route>
+          <Route path="/animal/:id/edit" component={AnimalEditScreen} exact></Route>
+          <Route path="/animals" component={AnimalListScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
-          <Route path="/profile" component={ProfileScreen}></Route>
+          <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+          <AdminRoute path="/animallist" component={AnimalListScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">© All rights reserved</footer>

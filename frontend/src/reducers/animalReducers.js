@@ -1,4 +1,4 @@
-import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_SUCCESS, ANIMAL_DETAILS_REQUEST, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS } from "../constants/animalConstants";
+import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_SUCCESS, ANIMAL_DETAILS_REQUEST, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS, ANIMAL_CREATE_REQUEST, ANIMAL_CREATE_SUCCESS, ANIMAL_CREATE_FAIL, ANIMAL_CREATE_RESET } from "../constants/animalConstants";
 
 export const animalListReducer = (state = { loading: true, animals: [] }, action) => {
     switch (action.type) {
@@ -13,7 +13,7 @@ export const animalListReducer = (state = { loading: true, animals: [] }, action
     }
 };
 
-export const animalDetailsReducer = (state = { animal: {}, loading: true }, action) => {
+export const animalDetailsReducer = (state = { loading: true }, action) => {
     switch (action.type) {
         case ANIMAL_DETAILS_REQUEST:
             return { loading: true };
@@ -21,6 +21,21 @@ export const animalDetailsReducer = (state = { animal: {}, loading: true }, acti
             return { loading: false, animal: action.payload };
         case ANIMAL_DETAILS_FAIL:
             return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const animalCreateReducer = (state = { animal: {}, loading: true }, action) => {
+    switch (action.type) {
+        case ANIMAL_CREATE_REQUEST:
+            return { loading: true };
+        case ANIMAL_CREATE_SUCCESS:
+            return { loading: false, success: true, animal: action.payload };
+        case ANIMAL_CREATE_FAIL:
+            return { loading: false, error: action.payload };
+        case ANIMAL_CREATE_RESET:
+            return {};
         default:
             return state;
     }
