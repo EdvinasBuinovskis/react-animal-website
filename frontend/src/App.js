@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -28,7 +29,12 @@ function App() {
                 <div className="dropdown">
                   <Link to="#">{userInfo.name} <i class="fa fa-caret-down"></i></Link>
                   <ul className="dropdown-content">
-                    <Link to="#signout" onClick={signoutHandler}>Sign Out</Link>
+                    <li>
+                      <Link to="/profile">User Profile</Link>
+                    </li>
+                    <li>
+                      <Link to="#signout" onClick={signoutHandler}>Sign Out</Link>
+                    </li>
                   </ul>
                 </div>
               ) : (
@@ -42,6 +48,7 @@ function App() {
           <Route path="/animal/:id" component={AnimalScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
+          <Route path="/profile" component={ProfileScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">© All rights reserved</footer>
