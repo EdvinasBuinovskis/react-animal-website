@@ -7,13 +7,13 @@ import MessageBox from '../components/MessageBox';
 
 export default function AnimalScreen(props) {
     const dispatch = useDispatch();
-    const productId = props.match.params.id;
+    const animalId = props.match.params.id;
     const animalDetails = useSelector(state => state.animalDetails);
     const { loading, error, animal } = animalDetails;
 
     useEffect(() => {
-        dispatch(detailsAnimal(productId));
-    }, [dispatch, productId]);
+        dispatch(detailsAnimal(animalId));
+    }, [dispatch, animalId]);
 
     return (
         <div>

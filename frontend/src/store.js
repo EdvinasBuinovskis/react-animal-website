@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { animalDetailsReducer, animalListReducer, animalCreateReducer } from './reducers/animalReducers';
+import { animalDetailsReducer, animalListReducer, animalCreateReducer, animalUpdateReducer } from './reducers/animalReducers';
 import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer } from './reducers/userReducer';
 
 const initialState = {
@@ -11,6 +11,7 @@ const initialState = {
 const reducer = combineReducers({
     animalList: animalListReducer,
     animalCreate: animalCreateReducer,
+    animalUpdate: animalUpdateReducer,
     animalDetails: animalDetailsReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,

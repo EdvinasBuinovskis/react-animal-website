@@ -11,6 +11,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AnimalListScreen from './screens/AnimalListScreen';
 import AdminRoute from './components/AdminRoute';
 import AnimalEditScreen from './screens/AnimalEditScreen';
+import AnimalCreateScreen from './screens/AnimalCreateScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -62,8 +63,9 @@ function App() {
         </header>
         <main>
           <Route path="/animal/:id" component={AnimalScreen} exact></Route>
-          <Route path="/animal/:id/edit" component={AnimalEditScreen} exact></Route>
-          <Route path="/animals" component={AnimalListScreen}></Route>
+          <AdminRoute path="/animal/:id/edit" component={AnimalEditScreen} exact></AdminRoute>
+          {/* <Route path="/animals" component={AnimalListScreen}></Route> */}
+          <AdminRoute path="/animal/add" component={AnimalCreateScreen}></AdminRoute>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
