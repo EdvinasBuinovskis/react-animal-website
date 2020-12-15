@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { listAnimals } from '../actions/animalActions';
+import { deleteAnimal, listAnimals } from '../actions/animalActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import { ANIMAL_DELETE_RESET } from '../constants/animalConstants';
 //import { ANIMAL_CREATE_RESET } from '../constants/animalConstants';
 
 export default function AnimalListScreen(props) {
@@ -13,6 +14,8 @@ export default function AnimalListScreen(props) {
 
     // const animalCreate = useSelector((state) => state.animalCreate);
     // const { success: successCreate, error: errorCreate, loading: loadingCreate, animal: createdAnimal } = animalCreate;
+    const animalDelete = useSelector((state) => state.animalDelete);
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = animalDelete;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,11 +23,16 @@ export default function AnimalListScreen(props) {
         //     dispatch({ type: ANIMAL_CREATE_RESET });
         //     props.history.push(`/animal/${createdAnimal._id}/edit`);
         // }
+        if (successDelete) {
+            dispatch({ type: ANIMAL_DELETE_RESET });
+        }
         dispatch(listAnimals());
-    }, [dispatch]);
+    }, [dispatch, successDelete]);
 
-    const deleteHandler = () => {
-        /// TODO: dispatch delete action
+    const deleteHandler = (animal) => {
+        if (window.confirm('Are you sure you want to delete?')) {
+            dispatch(deleteAnimal(animal._id));
+        }
     };
     return (
         <div>
@@ -36,8 +44,8 @@ export default function AnimalListScreen(props) {
                     Create Animal
                 </button>
             </div>
-            {/* { loadingCreate && <LoadingBox></LoadingBox>}
-            { errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>} */}
+            { loadingDelete && <LoadingBox></LoadingBox>}
+            { errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
             {
                 loading ? (
                     <LoadingBox></LoadingBox>

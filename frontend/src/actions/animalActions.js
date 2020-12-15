@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_REQUEST, ANIMAL_DETAILS_SUCCESS, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS, ANIMAL_CREATE_FAIL, ANIMAL_CREATE_REQUEST, ANIMAL_CREATE_SUCCESS, ANIMAL_UPDATE_REQUEST, ANIMAL_UPDATE_SUCCESS, ANIMAL_UPDATE_FAIL } from "../constants/animalConstants"
+import { ANIMAL_DETAILS_FAIL, ANIMAL_DETAILS_REQUEST, ANIMAL_DETAILS_SUCCESS, ANIMAL_LIST_FAIL, ANIMAL_LIST_REQUEST, ANIMAL_LIST_SUCCESS, ANIMAL_CREATE_FAIL, ANIMAL_CREATE_REQUEST, ANIMAL_CREATE_SUCCESS, ANIMAL_UPDATE_REQUEST, ANIMAL_UPDATE_SUCCESS, ANIMAL_UPDATE_FAIL, ANIMAL_DELETE_REQUEST, ANIMAL_DELETE_SUCCESS, ANIMAL_DELETE_FAIL } from "../constants/animalConstants"
 
 export const listAnimals = () => async (dispatch) => {
     dispatch({
@@ -46,6 +46,19 @@ export const updateAnimal = (animal) => async (dispatch, getState) => {
         dispatch({ type: ANIMAL_UPDATE_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: ANIMAL_UPDATE_FAIL, payload: error.response && error.response.data.message ? error.response.data.message : error.message });
+    }
+};
+
+export const deleteAnimal = (animalId) => async (dispatch, getState) => {
+    dispatch({ type: ANIMAL_DELETE_REQUEST, payload: animalId });
+    const { userSignin: { userInfo } } = getState();
+    try {
+        const { data } = await Axios.delete(`/api/animals/${animalId}`, {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+        });
+        dispatch({ type: ANIMAL_DELETE_SUCCESS });
+    } catch (error) {
+        dispatch({ type: ANIMAL_DELETE_FAIL, payload: error.response && error.response.data.message ? error.response.data.message : error.message });
     }
 };
 
